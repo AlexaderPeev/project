@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Mvc;
+using project.Models;
 
-namespace ConsoleApp8
+namespace project.Controllers
 {
-    internal class UsersController
+    public class LocationsController : Controller
     {
+        private readonly YourDbContext _context;
+
+        public LocationsController(YourDbContext context)
+        {
+            _context = context;
+        }
     }
 }
