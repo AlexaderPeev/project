@@ -1,15 +1,15 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace project.Models
+namespace Project.Models
 {
     public class Location
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Address is required")]
         public string Address { get; set; }
     }
 }
