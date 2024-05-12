@@ -1,51 +1,41 @@
-﻿using System;
+using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace project.Models
+namespace Project.Models
 {
     public class Task
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Name is required")]
         public string Name { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Description is required")]
         public string Description { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Location is required")]
+        public int LocationId { get; set; }
         public Location Location { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Deadline is required")]
         public DateTime Deadline { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Budget is required")]
         public decimal Budget { get; set; }
 
-        [Required]
-        public TaskCategory Category { get; set; }
+        [Required(ErrorMessage = "Category is required")]
+        public string Category { get; set; } 
 
-        public TaskStatus Status { get; set; }
+        [Required(ErrorMessage = "Status is required")]
+        public string Status { get; set; } 
 
-        public User AssignedUser { get; set; }
+        public string ClientId { get; set; }
+        public User Client { get; set; }
+
+        public string AssignedToId { get; set; }
+        public User AssignedTo { get; set; }
 
         public DateTime? ReviewDate { get; set; }
-    }
-
-    public enum TaskStatus
-    {
-        Pending,
-        Assigned,
-        UnderReview,
-        Completed,
-        Rejected
-    }
-
-    public enum TaskCategory
-    {
-        CleaningAndDisinfection,
-        PetAndPlantCare,
-        ChildCare,
-        ElderlyCare
+        public string ReviewImage { get; set; }
     }
 }
