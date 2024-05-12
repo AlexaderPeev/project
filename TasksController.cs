@@ -1,15 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using project.Models;
+using Microsoft.AspNetCore.Mvc;
+using Project.Models;
+using System.Linq;
 
-namespace project.Controllers
+namespace Project.Controllers
 {
     public class TasksController : Controller
     {
-        private readonly YourDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public TasksController(YourDbContext context)
+        public TasksController(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        public IActionResult Index()
+        {
+            var tasks = _context.Tasks.ToList();
+            return View(tasks);
         }
     }
 }
