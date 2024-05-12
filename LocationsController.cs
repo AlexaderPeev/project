@@ -1,15 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using project.Models;
+using Microsoft.AspNetCore.Mvc;
+using Project.Models;
+using System.Linq;
 
-namespace project.Controllers
+namespace Project.Controllers
 {
     public class LocationsController : Controller
     {
-        private readonly YourDbContext _context;
+        private readonly ApplicationDbContext _context;
 
-        public LocationsController(YourDbContext context)
+        public LocationsController(ApplicationDbContext context)
         {
             _context = context;
+        }
+
+        public IActionResult Index()
+        {
+            var locations = _context.Locations.ToList();
+            return View(locations);
         }
     }
 }
